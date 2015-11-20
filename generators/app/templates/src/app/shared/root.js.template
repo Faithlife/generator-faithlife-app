@@ -1,0 +1,29 @@
+import React from 'react';
+import { Provider } from 'react-redux';
+import Helmet from 'react-helmet';
+
+export function getViewRoot(View, store, isDebug) {
+	return (
+		<div>
+			<Helmet titleTemplate="%s - <%= title %>" />
+			<Provider store={store}>
+				{View}
+			</Provider>
+			{renderDebugPanel(isDebug, store)}
+		</div>
+	);
+}
+
+function renderDebugPanel(isDebug, store) {
+	if (isDebug) {
+		let { DevTools, DebugPanel, LogMonitor } = require('redux-devtools/lib/react');
+
+		return (
+			<DebugPanel top right bottom>
+				<DevTools store={store} monitor={LogMonitor} />
+			</DebugPanel>
+		);
+	}
+
+	return '';
+}

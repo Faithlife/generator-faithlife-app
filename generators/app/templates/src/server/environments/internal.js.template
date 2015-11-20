@@ -1,0 +1,13 @@
+export default {
+	oauthCredentials: {
+		consumerToken: '<%= consumerToken %>',
+		consumerSecret: '<%= consumerSecret %>',
+	},
+	baseUrls: {
+		auth: 'https://auth.faithlife.com/v1/',
+		accounts: 'https://accountsapi.logos.com/v2/',
+	},
+	session: {
+		secret: process.env.SESSION_SECRET || 'not very secret',
+	},
+};

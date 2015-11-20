@@ -1,0 +1,47 @@
+{
+  "name": "<%= name %>",
+  "version": "1.0.0",
+  "description": "<%= description %>",
+  "scripts": {
+    "start": "node server.js",
+    "lint": "eslint ./src/**/*.js?\\(x\\)",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle": "npm run lint && jspm bundle-sfx src/app/client/main.js dist/main.bundle.js --minify"
+  },
+  "author": "<%= author %>",
+  "dependencies": {
+    "babel": "^5.8.21",
+    "babel-core": "^5.8.22",
+    "babel-runtime": "^5.8.25",
+    "client-sessions": "^0.7.0",
+    "express": "^4.13.3",
+    "node-validator": "0.1.19",
+    "request": "^2.65.0",
+    "systemjs": "^0.19.5"
+  },
+  "devDependencies": {
+    "babel-eslint": "^4.1.5",
+    "eslint": "^1.9.0",
+    "eslint-config-airbnb": "^1.0.0",
+    "eslint-plugin-react": "^3.9.0",
+    "jspm": "^0.16.13"
+  },
+  "jspm": {
+    "dependencies": {
+      "history": "npm:history@^1.13.0",
+      "react": "npm:react@^0.14.1",
+      "react-dom": "npm:react-dom@^0.14.1",
+      "react-helmet": "npm:react-helmet@^2.2.0",
+      "react-redux": "npm:react-redux@^4.0.0",
+      "react-router": "npm:react-router@^1.0.0",
+      "redux": "npm:redux@^3.0.4",
+      "redux-thunk": "npm:redux-thunk@^1.0.0",
+      "whatwg-fetch": "npm:whatwg-fetch@^0.10.1"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  }
+}
