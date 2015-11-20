@@ -1,4 +1,4 @@
-# generator-faithlife-app [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# generator-faithlife-app [![NPM version][npm-image]][npm-url] [daviddm-image]][daviddm-url]
 > Generator for a node/React app that uses Faithlife authentication.
 
 ## Installation
@@ -23,7 +23,5 @@ MIT © [Faithlife Corporation]()
 
 [npm-image]: https://badge.fury.io/js/generator-faithlife-app.svg
 [npm-url]: https://npmjs.org/package/generator-faithlife-app
-[travis-image]: https://travis-ci.org/Faithlife/generator-faithlife-app.svg?branch=master
-[travis-url]: https://travis-ci.org/Faithlife/generator-faithlife-app
 [daviddm-image]: https://david-dm.org/Faithlife/generator-faithlife-app.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/Faithlife/generator-faithlife-app
