@@ -1,6 +1,6 @@
 {
   "name": "generator-faithlife-app",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Generator for a node/React app that uses Faithlife authentication.",
   "homepage": "",
   "author": {
@@ -18,5 +18,6 @@
     "glob": "^6.0.1",
     "yeoman-generator": "^0.21.1"
   },
-  "repository": "https://github.com/Faithlife/generator-faithlife-app"
+  "repository": "https://github.com/Faithlife/generator-faithlife-app",
+  "license": "MIT"
 }
