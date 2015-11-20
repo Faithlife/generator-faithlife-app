@@ -70,6 +70,25 @@ module.exports = yeoman.generators.Base.extend({
 		var self = this;
 		var done = self.async();
 
+		self.fs.write(
+			self.destinationPath('.gitignore'),
+			[
+				'# Temp files',
+				'.DS_Store',
+				'# Logs',
+				'logs',
+				'*.log',
+				'# Runtime data',
+				'pids',
+				'*.pid',
+				'*.seed',
+				'# Dependencies',
+				'node_modules',
+				'jspm_packages',
+				'# Config values',
+				'src/server/environments',
+			].join('\n'))
+
 		Promise.all([
 			self._findTemplatesAsync('**/*.{js,json}'),
 			self._findTemplatesAsync('**/*.template'),
