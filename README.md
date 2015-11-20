@@ -1,4 +1,4 @@
-# generator-faithlife-app [![NPM version][npm-image]][npm-url] [daviddm-image]][daviddm-url]
+# generator-faithlife-app [![NPM version][npm-image]][npm-url] [![Dependency Status][daviddm-image]][daviddm-url]
 > Generator for a node/React app that uses Faithlife authentication.
 
 ## Installation
