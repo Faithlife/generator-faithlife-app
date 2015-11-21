@@ -1,6 +1,6 @@
 {
   "name": "generator-faithlife-app",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Generator for a node/React app that uses Faithlife authentication.",
   "homepage": "",
   "author": {
@@ -8,7 +8,8 @@
     "url": "http://developer.faithlife.com/"
   },
   "files": [
-    "generators"
+    "generators",
+    "validate-credential.js"
   ],
   "main": "generators/index.js",
   "keywords": [
