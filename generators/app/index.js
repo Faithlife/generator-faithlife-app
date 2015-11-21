@@ -2,54 +2,69 @@
 var yeoman = require('yeoman-generator');
 var glob = require('glob');
 var path = require('path');
+var isValidOAuthCredential = require('../../validate-credential').isValidOAuthCredential;
 
-var isValidOAuthCredential = (function() {
-	var expression = /^[A-Fa-f0-9]{40}$/;
-	return function isValidOAuthCredential(input) {
-		return expression.exec(input) !== null;
-	}
-})();
+var options = [
+	{
+		name: 'name',
+		desc: 'Project name',
+		message: 'Your project name',
+		defaultGenerator: function(self) { return self.appname; },
+	},
+	{
+		name: 'title',
+		desc: 'Application title',
+		message: 'Application title',
+		defaultGenerator: function(self) { return function(props) { return props.name; } },
+	},
+	{
+		name: 'description',
+		desc: 'Package description',
+		message: 'Description',
+	},
+	{
+		name: 'author',
+		desc: 'Package author',
+		message: 'Author',
+	},
+	{
+		name: 'consumerToken',
+		desc: 'OAuth consumer token',
+		message: 'OAuth credentials can be created at https://developer.faithlife.com/applications/registered\nOAuth consumer token',
+		validate: isValidOAuthCredential,
+	},
+	{
+		name: 'consumerSecret',
+		desc: 'OAuth consumer secret',
+		message: 'OAuth consumer secret',
+		validate: isValidOAuthCredential,
+	}];
 
 module.exports = yeoman.generators.Base.extend({
+	constructor: function() {
+		var self = this;
+		yeoman.generators.Base.apply(self, arguments);
+
+		options.forEach(function(option) {
+			self.option(option.name, { desc: option.desc, type: 'String' });
+		});
+	},
+
 	prompting: function prompting() {
 		var self = this;
 		var done = this.async();
 
-		var prompts = [
-			{
-				type: 'input',
-				name: 'name',
-				message: 'Your project name',
-				default: self.appname,
-			},
-			{
-				type: 'input',
-				name: 'title',
-				message: 'Application title',
-				default: function(props) { return props.name; },
-			},
-			{
-				type: 'input',
-				name: 'description',
-				message: 'Description',
-			},
-			{
-				type: 'input',
-				name: 'author',
-				message: 'Author',
-			},
-			{
-				type: 'input',
-				name: 'consumerToken',
-				message: 'OAuth credentials can be created at https://developer.faithlife.com/applications/registered\nOAuth consumer token',
-				validate: isValidOAuthCredential,
-			},
-			{
-				type: 'input',
-				name: 'consumerSecret',
-				message: 'OAuth consumer secret',
-				validate: isValidOAuthCredential,
-			}];
+		var prompts = options
+			.filter(function (option) { return self.options[option.name] === undefined; })
+			.map(function (option) {
+				return {
+					type: 'input',
+					name: option.name,
+					message: option.message,
+					default: option.defaultGenerator ? option.defaultGenerator(self) : null,
+					validate: option.validate,
+				};
+			});
 
 		self.prompt(prompts, function (props) {
 			self.props = props;
