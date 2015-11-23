@@ -102,7 +102,7 @@ module.exports = yeoman.generators.Base.extend({
 				'jspm_packages',
 				'# Config values',
 				'src/server/environments',
-			].join('\n'))
+			].join('\n'));
 
 		Promise.all([
 			self._findTemplatesAsync('**/*.{js,json}'),
