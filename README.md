@@ -3,17 +3,16 @@
 
 ## Installation
 
-First, install [Yeoman](http://yeoman.io) and generator-faithlife-app using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+First, install [Yeoman](http://yeoman.io), [jspm](http://jspm.io/), and generator-faithlife-app using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
 ```bash
-npm install -g yo
-npm install -g generator-faithlife-app
+npm install -g yo jspm generator-faithlife-app
 ```
 
 Then generate your new project:
 
 ```bash
-yo generator-faithlife-app
+yo faithlife-app
 ```
 
 ## License
