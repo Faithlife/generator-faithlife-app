@@ -72,10 +72,10 @@ module.exports = yeoman.generators.Base.extend({
 		});
 	},
 
-	_findTemplatesAsync: function findTemplatesAsync(pattern) {
+	_findFilesAsync: function findFilesAsync(pattern) {
 		var sourceRoot = this.sourceRoot();
 		return new Promise(function (accept, reject) {
-			glob(pattern, { cwd: sourceRoot }, function(error, files) {
+			glob(pattern, { cwd: sourceRoot, dot: true }, function(error, files) {
 				return error ? reject(error) : accept(files);
 			});
 		});
@@ -105,8 +105,8 @@ module.exports = yeoman.generators.Base.extend({
 			].join('\n'));
 
 		Promise.all([
-			self._findTemplatesAsync('**/*.{js,json}'),
-			self._findTemplatesAsync('**/*.template'),
+			self._findFilesAsync('**/!(*.template)'),
+			self._findFilesAsync('**/*.template'),
 		]).then(function(promiseResults) {
 			promiseResults[0].forEach(function(file) {
 				self.fs.copy(self.templatePath(file), self.destinationPath(file));
