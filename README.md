@@ -9,10 +9,24 @@ First, install [Yeoman](http://yeoman.io), [jspm](http://jspm.io/), and generato
 npm install -g yo jspm generator-faithlife-app
 ```
 
-Then generate your new project:
+## Usage
+
+Generate your new project:
 
 ```bash
 yo faithlife-app
+```
+
+Bundle your new project:
+
+```bash
+npm run bundle
+```
+
+Run your new project:
+
+```bash
+npm start
 ```
 
 ## License
