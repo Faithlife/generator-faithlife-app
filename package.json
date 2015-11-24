@@ -1,6 +1,6 @@
 {
   "name": "generator-faithlife-app",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Generator for a node/React app that uses Faithlife authentication.",
   "homepage": "",
   "author": {
