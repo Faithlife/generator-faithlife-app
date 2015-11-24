@@ -2,9 +2,9 @@ import express from 'express';
 import querystring from 'querystring';
 import httpClient from 'request';
 
-const temporaryCredentials = '/temporarytoken';
-const authorize = '/authorize';
-const accessToken = '/accesstoken';
+const temporaryCredentials = 'temporarytoken';
+const authorize = 'authorize';
+const accessToken = 'accesstoken';
 
 const defaultBaseUrl = 'https://auth.faithlife.com/v1/';
 
