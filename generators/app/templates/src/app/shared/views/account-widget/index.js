@@ -1,26 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { signOut } from '../../actions/index';
 
-function mapStateToProps({ auth }) {
-	return { auth };
-}
-
-@connect(mapStateToProps)
 export class AccountWidget extends React.Component {
 	static propTypes = {
-		auth: React.PropTypes.object.isRequired,
-		dispatch: React.PropTypes.func.isRequired,
-	}
-
-	handleSignOut() {
-		if (!this.props.auth.isProcessing) {
-			this.props.dispatch(signOut());
-		}
+		user: React.PropTypes.object.isRequired,
+		handleSignOut: React.PropTypes.func.isRequired,
 	}
 
 	render() {
-		const user = this.props.auth.user;
+		const user = this.props.user;
 
 		if (user.id === '-1') {
 			return (
@@ -31,7 +18,7 @@ export class AccountWidget extends React.Component {
 		return (
 			<div>
 				<span>{user.alias || user.name}</span>
-				<button onClick={() => this.handleSignOut()}>Sign out</button>
+				<button onClick={() => this.props.handleSignOut()}>Sign out</button>
 			</div>
 		);
 	}
