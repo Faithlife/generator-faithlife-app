@@ -1,0 +1,43 @@
+{
+	"extends": "airbnb",
+	"parser": "babel-eslint",
+	"globals": {
+		"DEBUG": false,
+		"PRODUCTION": false,
+		"CLIENT": false
+	},
+	"rules": {
+		"indent": [2, "tab"],
+		"prefer-const": 0,
+		"no-param-reassign": 0,
+		"no-use-before-define": 0,
+		"func-names": 0,
+		"guard-for-in": 0,
+		"id-length": 0,
+		"no-console": 0,
+		"no-shadow": 0,
+		"array-bracket-spacing": [2, "always", {
+			"objectsInArrays": false,
+			"arraysInArrays": false
+		}],
+		"object-curly-spacing": [2, "always", {
+			"objectsInObjects": false,
+			"arraysInObjects": false
+		}],
+		"react/no-multi-comp": [2, {
+			"ignoreStateless": true
+		}],
+		"react/sort-comp": [2, {
+			"order": [
+				"propTypes",
+				"activate",
+				"lifecycle",
+				"/^on.+$/",
+				"/^handle.+$/",
+				"everything-else",
+				"/^render.+$/",
+				"render"
+			]
+		}]
+	}
+}
