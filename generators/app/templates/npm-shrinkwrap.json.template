@@ -4435,6 +4435,18 @@
         }
       }
     },
+    "node-validator": {
+      "version": "0.1.19",
+      "from": "node-validator@*",
+      "resolved": "https://registry.npmjs.org/node-validator/-/node-validator-0.1.19.tgz",
+      "dependencies": {
+        "moment": {
+          "version": "2.10.6",
+          "from": "moment@>=2.10.6 <2.11.0",
+          "resolved": "https://registry.npmjs.org/moment/-/moment-2.10.6.tgz"
+        }
+      }
+    },
     "request": {
       "version": "2.65.0",
       "from": "https://registry.npmjs.org/request/-/request-2.65.0.tgz",
