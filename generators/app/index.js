@@ -72,10 +72,10 @@ module.exports = yeoman.generators.Base.extend({
 		});
 	},
 
-	_findFilesAsync: function findFilesAsync(pattern) {
+	_findSourceFilesAsync: function findSourceFilesAsync() {
 		var sourceRoot = this.sourceRoot();
 		return new Promise(function (accept, reject) {
-			glob(pattern, { cwd: sourceRoot, dot: true }, function(error, files) {
+			glob('**/*.*', { cwd: sourceRoot, dot: true }, function(error, files) {
 				return error ? reject(error) : accept(files);
 			});
 		});
@@ -104,20 +104,18 @@ module.exports = yeoman.generators.Base.extend({
 				'src/server/environments',
 			].join('\n'));
 
-		Promise.all([
-			self._findFilesAsync('**/!(*.template)'),
-			self._findFilesAsync('**/*.template'),
-		]).then(function(promiseResults) {
-			promiseResults[0].forEach(function(file) {
-				self.fs.copy(self.templatePath(file), self.destinationPath(file));
-			});
-
-			promiseResults[1].forEach(function(file) {
-				self.fs.copyTpl(
-					self.templatePath(file),
-					self.destinationPath(path.join(path.dirname(file), path.basename(file, '.template'))),
-					self.props);
-			});
+		self._findSourceFilesAsync()
+			.then(function(files) {
+				files.forEach(function(file) {
+					if (file.match(/\.template$/)) {
+						self.fs.copyTpl(
+							self.templatePath(file),
+							self.destinationPath(path.join(path.dirname(file), path.basename(file, '.template'))),
+							self.props);
+					} else {
+						self.fs.copy(self.templatePath(file), self.destinationPath(file));
+					}
+				});
 
 			done();
 		}).catch(function(error) {
