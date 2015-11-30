@@ -1,5 +1,5 @@
 require('babel/register')({
-	only: 'src',
+	only: __dirname + '/src',
 });
 
 var env = process.env.NODE_ENV;
