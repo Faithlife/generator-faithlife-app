@@ -12,6 +12,8 @@ export function getCurrentUserIfNecessary() {
 		let { auth } = getState();
 		if (!auth.isProcessing && !auth.isLoaded) {
 			return dispatch(getCurrentUser());
+		} else {
+			return Promise.resolve({ result: auth.user, type: getCurrentUserTypes.success });
 		}
 	};
 }
