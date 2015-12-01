@@ -10,7 +10,7 @@ export function getCurrentUser() {
 export function getCurrentUserIfNecessary() {
 	return (dispatch, getState) => {
 		let { auth } = getState();
-		if (!auth.user.isLoaded && !auth.isProcessing) {
+		if (!auth.isProcessing && !auth.isLoaded) {
 			return dispatch(getCurrentUser());
 		}
 	};
