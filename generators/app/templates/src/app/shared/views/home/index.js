@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { AccountWidget } from '../account-widget/index';
-import { signOut } from '../../actions/index';
+import { signOut, getCurrentUserIfNecessary } from '../../actions/index';
 
 function mapStateToProps({ auth }) {
 	return { auth };
@@ -13,6 +13,10 @@ export class Home extends React.Component {
 	static propTypes = {
 		auth: React.PropTypes.object.isRequired,
 		dispatch: React.PropTypes.func.isRequired,
+	}
+
+	static activate(store) {
+		return store.dispatch(getCurrentUserIfNecessary());
 	}
 
 	handleSignOut() {
