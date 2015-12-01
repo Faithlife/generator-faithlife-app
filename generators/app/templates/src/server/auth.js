@@ -127,7 +127,7 @@ export function createAuthApp({ useHttpsCallback, baseUrl, oauthCredentials, get
 		session.deleteValue('oauthToken');
 		session.deleteValue('oauthSecret');
 
-		if (request.headers['content-type'] === 'application/json') {
+		if (request.headers['accept'] === 'application/json') {
 			response.status(200).send(JSON.stringify({ success: true }));
 		} else {
 			response.redirect(request.query.callback || '/');
