@@ -26,12 +26,28 @@ export function createAppRequestHandler() {
 
 		match({ routes, location: request.url }, (error, redirectLocation, renderProps) => {
 			if (error) {
+				console.error(error.stack || error);
 				render(500);
 			} else if (redirectLocation) {
 				response.redirect(302, redirectLocation.pathname + redirectLocation.search);
 			} else if (renderProps) {
-				activate(renderProps, [ store, renderProps ])
-					.then(() => render(200, renderProps), (e) => { console.error(e); return render(500); })
+				let replacementState;
+				renderProps.history.listen(function (state, routerState) {
+					replacementState = routerState;
+				});
+
+				activate(renderProps, [ store, renderProps, renderProps.history.pushState ])
+					.then(() => {
+						if (replacementState.location.pathname !== renderProps.location.pathname || replacementState.location.search !== renderProps.location.search) {
+							response.redirect(302, replacementState.location.pathname + replacementState.location.search);
+						} else {
+							render(200, renderProps);
+						}
+					})
+					.catch((error) => {
+						console.error(error);
+						return render(500);
+					})
 					.catch((error) => {
 						console.error(`Error: ${error.stack}`);
 						response.status(500).send('Error');
