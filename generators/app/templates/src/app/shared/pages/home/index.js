@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { AccountWidget } from '../account-widget/index';
+import { AccountWidget } from '../../components/account-widget/index';
 import { signOut, getCurrentUserIfNecessary } from '../../actions/index';
 
 function mapStateToProps({ auth }) {

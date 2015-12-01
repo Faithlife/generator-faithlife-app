@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import { App } from './views/app/index';
-import { Home } from './views/home/index';
+import { App } from './pages/app/index';
+import { Home } from './pages/home/index';
 
 export const routes = (
 	<Route component={App} path="/">
