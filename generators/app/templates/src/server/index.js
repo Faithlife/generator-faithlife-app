@@ -55,9 +55,11 @@ Promise.all([ createClientFactoryAsync(config.oauthCredentials), System.import('
 					},
 					setValue(key, value) {
 						auth[key] = value;
+						request.clients = createClients(request);
 					},
 					deleteValue(key) {
 						delete auth[key];
+						request.clients = createClients(request);
 					},
 				};
 			},
