@@ -20,7 +20,15 @@ export function createFetcher({ baseUrl }) {
 
 export function rejectOnError(response) {
 	if (!response.ok) {
-		throw response;
+		const error = new Error('Unexpected server response.');
+		return response.json()
+			.catch(() => {
+				throw error;
+			})
+			.then(serverResponse => {
+				error.serverResponse = serverResponse;
+				throw error;
+			});
 	}
 
 	return response;
