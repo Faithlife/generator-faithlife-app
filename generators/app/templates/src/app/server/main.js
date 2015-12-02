@@ -32,7 +32,7 @@ export function createAppRequestHandler() {
 				response.redirect(302, redirectLocation.pathname + redirectLocation.search);
 			} else if (renderProps) {
 				let replacementState;
-				renderProps.history.listen(function (state, routerState) {
+				renderProps.history.listen(function(state, routerState) {
 					replacementState = routerState;
 				});
 				replacementState = null;

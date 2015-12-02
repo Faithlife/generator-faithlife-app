@@ -10,11 +10,12 @@ export function getCurrentUser() {
 export function getCurrentUserIfNecessary() {
 	return (dispatch, getState) => {
 		let { auth } = getState();
-		if (!auth.isProcessing && !auth.isLoaded) {
-			return dispatch(getCurrentUser());
-		} else {
+
+		if (auth.isProcessing || auth.isLoaded) {
 			return Promise.resolve({ result: auth.user, type: getCurrentUserTypes.success });
 		}
+
+		return dispatch(getCurrentUser());
 	};
 }
 
