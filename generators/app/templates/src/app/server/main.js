@@ -35,10 +35,11 @@ export function createAppRequestHandler() {
 				renderProps.history.listen(function (state, routerState) {
 					replacementState = routerState;
 				});
+				replacementState = null;
 
 				activate(renderProps, [ store, renderProps, renderProps.history.pushState ])
 					.then(() => {
-						if (replacementState.location.pathname !== renderProps.location.pathname || replacementState.location.search !== renderProps.location.search) {
+						if (replacementState && (replacementState.location.pathname !== renderProps.location.pathname || replacementState.location.search !== renderProps.location.search)) {
 							response.redirect(302, replacementState.location.pathname + replacementState.location.search);
 						} else {
 							render(200, renderProps);
