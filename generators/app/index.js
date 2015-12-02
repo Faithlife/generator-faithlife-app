@@ -75,7 +75,7 @@ module.exports = yeoman.generators.Base.extend({
 	_findSourceFilesAsync: function findSourceFilesAsync() {
 		var sourceRoot = this.sourceRoot();
 		return new Promise(function (accept, reject) {
-			glob('**/*.*', { cwd: sourceRoot, dot: true }, function(error, files) {
+			glob('**', { cwd: sourceRoot, dot: true, nodir: true }, function(error, files) {
 				return error ? reject(error) : accept(files);
 			});
 		});
