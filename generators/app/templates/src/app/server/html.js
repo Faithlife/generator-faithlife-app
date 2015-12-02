@@ -35,12 +35,12 @@ export class Html extends React.Component {
 
 function renderScripts() {
 	if (!DEBUG) {
-		return [ <script src="/dist/main.bundle.js" /> ];
+		return [ <script key="bundle" src="/dist/main.bundle.js" /> ];
 	}
 
 	return [
-		<script src="/jspm_packages/system.js" />,
-		<script src="/config.js" />,
-		<script dangerouslySetInnerHTML={{ __html: "System.import('/app/client/main.js').catch(function (error) { console.log(error); });" }} />,
+		<script key="system" src="/jspm_packages/system.js" />,
+		<script key="config" src="/config.js" />,
+		<script key="bootstrap" dangerouslySetInnerHTML={{ __html: "System.import('/app/client/main.js').catch(function (error) { console.log(error); });" }} />,
 	];
 }
