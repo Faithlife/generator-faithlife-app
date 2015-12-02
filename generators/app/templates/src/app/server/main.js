@@ -46,7 +46,7 @@ export function createAppRequestHandler() {
 						}
 					})
 					.catch((error) => {
-						console.error(error);
+						console.error(error.stack || error);
 						return render(500);
 					})
 					.catch((error) => {
