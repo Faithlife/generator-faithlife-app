@@ -2,6 +2,9 @@ require('babel/register')({
 	only: __dirname + '/src',
 });
 
+require.extensions['.less'] = function() {
+};
+
 var env = process.env.NODE_ENV;
 global.DEBUG = env !== 'production' && env !== 'internal';
 global.PRODUCTION = env === 'production';

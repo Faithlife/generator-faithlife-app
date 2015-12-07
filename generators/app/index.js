@@ -99,9 +99,10 @@ module.exports = yeoman.generators.Base.extend({
 				'*.seed',
 				'# Dependencies',
 				'node_modules',
-				'jspm_packages',
 				'# Config values',
 				'src/server/environments',
+				'# Bundled files',
+				'dist',
 			].join('\n'));
 
 		self._findSourceFilesAsync()
@@ -125,6 +126,5 @@ module.exports = yeoman.generators.Base.extend({
 
 	install: function install() {
 		this.npmInstall();
-		this.runInstall('jspm');
 	}
 });

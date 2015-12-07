@@ -29,5 +29,5 @@ ReactDOM.render(getViewRoot(view, store, isDebug), document.getElementById('app'
 
 function handleRouterUpdate() {
 	const state = this.state;
-	activate(state, [ store, state, this.history.pushState ]);
+	activate(state, [ store, state, this.history.push ]);
 }

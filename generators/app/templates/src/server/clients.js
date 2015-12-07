@@ -1,8 +1,7 @@
 import request from 'request';
 import config from './config';
-import jspm from 'jspm';
-
-const System = new jspm.Loader();
+import { createAccountsClient } from '../app/shared/clients/accounts';
+import { createAuthClient } from '../app/shared/clients/auth';
 
 function createFetcher(baseRequest) {
 	return {
@@ -22,27 +21,22 @@ function fetchUnsupported() {
 	return Promise.reject(new Error('This client is unsupported on the server.'));
 }
 
-export function createClientFactoryAsync({ consumerToken, consumerSecret }) {
-	return Promise.all([
-		System.import('src/app/shared/clients/accounts'),
-		System.import('src/app/shared/clients/auth') ])
-		.then(function([{ createAccountsClient }, { createAuthClient }]) {
-			return function createClients({ auth: { oauthToken, oauthSecret }}) {
-				const oauth = {
-					consumer_key: consumerToken,
-					consumer_secret: consumerSecret,
-					token: oauthToken,
-					token_secret: oauthSecret,
-				};
+export function createClientFactory({ consumerToken, consumerSecret }) {
+	return function createClients({ auth: { oauthToken, oauthSecret }}) {
+		const oauth = {
+			consumer_key: consumerToken,
+			consumer_secret: consumerSecret,
+			token: oauthToken,
+			token_secret: oauthSecret,
+		};
 
-				return {
-					accountsClient: createAccountsClient(createFetcher(request.defaults({
-						baseUrl: config.baseUrls.accounts,
-						oauth: oauth,
-						json: true,
-					}))),
-					authClient: createAuthClient(fetchUnsupported),
-				};
-			};
-		});
+		return {
+			accountsClient: createAccountsClient(createFetcher(request.defaults({
+				baseUrl: config.baseUrls.accounts,
+				oauth: oauth,
+				json: true,
+			}))),
+			authClient: createAuthClient(fetchUnsupported),
+		};
+	};
 }

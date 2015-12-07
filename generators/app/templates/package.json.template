@@ -4,44 +4,47 @@
   "description": "<%= description %>",
   "scripts": {
     "start": "node server.js",
+    "dev": "node dev.js",
     "lint": "eslint ./src/**/*.js?\\(x\\)",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "bundle": "npm run lint && jspm bundle-sfx src/app/client/main.js dist/main.bundle.js --minify"
+    "bundle": "npm run lint && webpack --config ./src/server/webpack.config --progress"
   },
   "author": "<%= author %>",
   "dependencies": {
     "babel": "^5.8.21",
     "babel-core": "^5.8.22",
     "babel-runtime": "^5.8.25",
+    "body-parser": "^1.14.1",
     "client-sessions": "^0.7.0",
     "express": "^4.13.3",
     "node-validator": "0.1.19",
-    "request": "^2.65.0",
-    "systemjs": "^0.19.5"
+    "react": "^0.14.1",
+    "react-dom": "^0.14.1",
+    "react-helmet": "^2.2.0",
+    "react-redux": "^4.0.0",
+    "react-router": "^1.0.0",
+    "redux": "^3.0.4",
+    "redux-thunk": "^1.0.0",
+    "request": "^2.65.0"
   },
   "devDependencies": {
+    "autoprefixer-loader": "^3.1.0",
     "babel-eslint": "^4.1.5",
+    "babel-loader": "^5.4.0",
+    "babel-preset-react": "^6.1.18",
+    "css-loader": "^0.23.0",
     "eslint": "^1.9.0",
     "eslint-config-airbnb": "^1.0.0",
     "eslint-plugin-react": "^3.9.0",
-    "jspm": "^0.16.13"
-  },
-  "jspm": {
-    "dependencies": {
-      "history": "npm:history@^1.13.0",
-      "react": "npm:react@^0.14.1",
-      "react-dom": "npm:react-dom@^0.14.1",
-      "react-helmet": "npm:react-helmet@^2.2.0",
-      "react-redux": "npm:react-redux@^4.0.0",
-      "react-router": "npm:react-router@^1.0.0",
-      "redux": "npm:redux@^3.0.4",
-      "redux-thunk": "npm:redux-thunk@^1.0.0",
-      "whatwg-fetch": "npm:whatwg-fetch@^0.10.1"
-    },
-    "devDependencies": {
-      "babel": "npm:babel-core@^5.8.24",
-      "babel-runtime": "npm:babel-runtime@^5.8.24",
-      "core-js": "npm:core-js@^1.1.4"
-    }
+    "extract-text-webpack-plugin": "^0.9.1",
+    "forever-monitor": "^1.7.0",
+    "history": "^1.12.0",
+    "http-proxy": "^1.12.0",
+    "less": "^2.3.1",
+    "less-loader": "^2.2.2",
+    "redux-devtools": "^2.1.5",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0"
   }
 }
