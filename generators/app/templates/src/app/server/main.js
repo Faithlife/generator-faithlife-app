@@ -37,7 +37,7 @@ export function createAppRequestHandler() {
 				});
 				replacementState = null;
 
-				activate(renderProps, [ store, renderProps, renderProps.history.pushState ])
+				activate(renderProps, [ store, renderProps, renderProps.history.push ])
 					.then(() => {
 						if (replacementState && (replacementState.location.pathname !== renderProps.location.pathname || replacementState.location.search !== renderProps.location.search)) {
 							response.redirect(302, replacementState.location.pathname + replacementState.location.search);

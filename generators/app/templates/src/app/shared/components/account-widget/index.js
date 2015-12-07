@@ -1,4 +1,5 @@
 import React from 'react';
+import './style.less';
 
 export class AccountWidget extends React.Component {
 	static propTypes = {
@@ -11,7 +12,7 @@ export class AccountWidget extends React.Component {
 
 		if (user.id === '-1') {
 			return (
-				<div><a href="/auth/signin">Sign in</a></div>
+				<div className="centered-link"><a href="/auth/signin">Sign in</a></div>
 			);
 		}
 

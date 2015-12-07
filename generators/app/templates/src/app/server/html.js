@@ -22,25 +22,14 @@ export class Html extends React.Component {
 					{head.meta.toComponent()}
 					{head.title.toComponent()}
 					<link rel="shortcut icon" href="/public/images/favicon.ico" />
+					<link rel="stylesheet" type="text/css" href="/dist/style.css" />
 				</head>
 				<body>
 					<div id="app" dangerouslySetInnerHTML={{ __html: content }} />
 					<script dangerouslySetInnerHTML={{ __html: `var __INITIAL_STATE__ = ${JSON.stringify(store.getState())}, __DEBUG__ = ${isDebug};` }} />
-					{renderScripts()}
+					<script src="/dist/main.bundle.js" />
 				</body>
 			</html>
 		);
 	}
-}
-
-function renderScripts() {
-	if (!DEBUG) {
-		return [ <script key="bundle" src="/dist/main.bundle.js" /> ];
-	}
-
-	return [
-		<script key="system" src="/jspm_packages/system.js" />,
-		<script key="config" src="/config.js" />,
-		<script key="bootstrap" dangerouslySetInnerHTML={{ __html: "System.import('/app/client/main.js').catch(function (error) { console.log(error); });" }} />,
-	];
 }

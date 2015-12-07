@@ -17,16 +17,13 @@ Generate your new project:
 yo faithlife-app
 ```
 
-Bundle your new project:
+During development, run your new project using `npm run dev`.
+
+To run outside of development, run the following commands:
 
 ```bash
 npm run bundle
-```
-
-Run your new project:
-
-```bash
-npm start
+NODE_ENV=<Environment goes here> npm start
 ```
 
 ## License
