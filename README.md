@@ -6,7 +6,7 @@
 First, install [Yeoman](http://yeoman.io), [jspm](http://jspm.io/), and generator-faithlife-app using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
 ```bash
-npm install -g yo jspm generator-faithlife-app
+npm install -g yo generator-faithlife-app
 ```
 
 ## Usage
