@@ -1,18 +1,21 @@
 import { getCurrentUserTypes, signOutTypes } from '../actions/action-types';
 
-export function auth(state = { user: defaultUser, isProcessing: false }, action) {
-	let { type, result } = action;
+const actionHandlers = {
+	[getCurrentUserTypes.success]: function setCurrentUser(state, { result }) {
+		return { ...state, isProcessing: false, user: result, error: null };
+	},
+	[signOutTypes.success]: function clearCurrentUser(state) {
+		return { ...state, isProcessing: false, user: defaultUser, error: null };
+	},
+};
 
-	switch (type) {
-	case getCurrentUserTypes.success:
-		return Object.assign({}, state, { isProcessing: false, user: result, error: null });
-
-	case signOutTypes.success:
-		return { isProcessing: false, user: defaultUser, error: null };
-
-	default:
+export function auth(state = { user: defaultUser, isProcessing: false, error: null }, action) {
+	const handler = actionHandlers[action.type];
+	if (!handler) {
 		return state;
 	}
+
+	return handler(state, action);
 }
 
 const defaultUser = {
