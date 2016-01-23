@@ -1,5 +1,4 @@
 import React from 'react';
-import './style.less';
 
 export class AccountWidget extends React.Component {
 	static propTypes = {
