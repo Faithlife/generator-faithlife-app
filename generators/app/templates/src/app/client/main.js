@@ -9,12 +9,7 @@ import { activate } from '../shared/activator';
 import { getViewRoot } from '../shared/root';
 import * as clients from './http';
 
-const isDebug = window.__DEBUG__;
-
 const storeConfigs = [];
-if (isDebug) {
-	storeConfigs.push(require('redux-devtools').devTools());
-}
 
 const store = configureStore(window.__INITIAL_STATE__ || {}, clients, storeConfigs);
 
@@ -25,7 +20,7 @@ const view = (
 		onUpdate={handleRouterUpdate} />
 	);
 
-ReactDOM.render(getViewRoot(view, store, isDebug), document.getElementById('app'));
+ReactDOM.render(getViewRoot(view, store), document.getElementById('app'));
 
 function handleRouterUpdate() {
 	const state = this.state;

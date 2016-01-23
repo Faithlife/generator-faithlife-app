@@ -4,13 +4,12 @@ import Helmet from 'react-helmet';
 
 export class Html extends React.Component {
 	static propTypes = {
-		isDebug: React.PropTypes.bool.isRequired,
 		store: React.PropTypes.object.isRequired,
 		children: React.PropTypes.node.isRequired,
 	}
 
 	render() {
-		const { isDebug, store, children } = this.props;
+		const { store, children } = this.props;
 		const content = ReactDOMServer.renderToString(children);
 		let head = Helmet.rewind();
 
@@ -26,7 +25,7 @@ export class Html extends React.Component {
 				</head>
 				<body>
 					<div id="app" dangerouslySetInnerHTML={{ __html: content }} />
-					<script dangerouslySetInnerHTML={{ __html: `var __INITIAL_STATE__ = ${JSON.stringify(store.getState())}, __DEBUG__ = ${isDebug};` }} />
+					<script dangerouslySetInnerHTML={{ __html: `var __INITIAL_STATE__ = ${JSON.stringify(store.getState())};` }} />
 					<script src="/dist/main.bundle.js" />
 				</body>
 			</html>

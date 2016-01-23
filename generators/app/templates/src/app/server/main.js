@@ -8,16 +8,14 @@ import { routes } from '../shared/routes';
 import { configureStore } from '../shared/configure-store';
 import { getViewRoot } from '../shared/root';
 
-const isDebug = !!process.env.DEVTOOLS;
-
 export function createAppRequestHandler() {
 	return function handleAppRequest(request, response) {
 		const store = configureStore({}, request.clients);
 
 		function render(status, renderProps) {
 			const content = ReactDOMServer.renderToString(
-				<Html isDebug={isDebug} store={store}>
-					{getViewRoot((<RoutingContext {...renderProps} />), store, isDebug)}
+				<Html store={store}>
+					{getViewRoot((<RoutingContext {...renderProps} />), store)}
 				</Html>
 			);
 
