@@ -1,6 +1,6 @@
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
-import webpackConfig from './webpack.dev.config.js';
+import webpackConfig from './webpack.dev.config';
 import httpProxy from 'http-proxy';
 import forever from 'forever-monitor';
 

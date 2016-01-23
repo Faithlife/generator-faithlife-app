@@ -1,7 +1,6 @@
 /* eslint-disable no-var */
 
 var path = require('path');
-var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var projectRoot = path.resolve(__dirname, '../../');
@@ -49,7 +48,5 @@ module.exports = {
 		new ExtractTextPlugin('style.css', {
 			allChunks: true,
 		}),
-		new webpack.optimize.DedupePlugin(),
-		new webpack.optimize.UglifyJsPlugin({ output: { comments: false }}),
 	],
 };
