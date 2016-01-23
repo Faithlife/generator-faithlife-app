@@ -7,7 +7,7 @@ var projectRoot = path.resolve(__dirname, '../../');
 
 module.exports = {
 	entry: {
-		main: path.join(projectRoot, 'src/app/client/main.js'),
+		main: path.join(projectRoot, 'src/app/client/main.jsx'),
 	},
 
 	output: {
