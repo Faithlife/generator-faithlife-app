@@ -13,7 +13,7 @@ export function createAppRequestHandler() {
 		const store = configureStore({}, request.clients);
 
 		function render(status, renderProps) {
-			const content = ReactDOMServer.renderToString(
+			const content = ReactDOMServer.renderToStaticMarkup(
 				<Html store={store}>
 					{getViewRoot((<RoutingContext {...renderProps} />), store)}
 				</Html>
