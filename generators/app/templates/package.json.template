@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node dev.js",
-    "lint": "eslint ./src/**/*.js?\\(x\\)",
+    "lint": "eslint ./src/**/*.{js,jsx}",
     "test": "echo \"Error: no test specified\" && exit 1",
     "bundle": "npm run lint && webpack --config ./src/server/webpack.production.config --progress"
   },
